@@ -1,5 +1,5 @@
 import React from 'react';
-import BuyNow from '../../Components/Dashboard-Sections/BuyNow';
+import BuyNow from '../../Components/Purchase/BuyNow';
 
 const Dashboard = () => {
     return (

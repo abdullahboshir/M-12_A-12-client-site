@@ -1,7 +1,16 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 
 const PartsUi = ({part}) => {
-    const {name, img, price, quantity, minimuQuantity, Features} = part;
+  
+  const navigate = useNavigate()
+  const {_id, name, img, price, quantity, minimuQuantity, Features} = part;
+
+  const handleBuyNow = id => {
+    navigate(`/buyNow/${id}`)
+  }
+   
+
     return ( 
        <div>
          <div class="card rounded-none  bg-base-100 shadow-xl lg:w-96 mb-28">
@@ -20,7 +29,7 @@ const PartsUi = ({part}) => {
 
            <div className='flex justify-between items-center mt-12'>
            <h2 class="card-title text-lg">Price: <span className='text-secondary'>${price}.00</span></h2>
-           <button class="btn bg-slate-700 py-0 h-0 text-white hover:bg-secondary hover:border-transparent" >Buy Now</button>
+           <button class="btn bg-slate-700 py-0 h-0 text-white hover:bg-secondary hover:border-transparent" onClick={() => handleBuyNow(_id)}>Buy Now</button>
            </div>
 
         </div>
