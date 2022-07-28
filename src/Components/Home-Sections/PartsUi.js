@@ -2,7 +2,7 @@ import React from 'react';
 
 const PartsUi = ({part}) => {
     const {name, img, price, quantity, minimuQuantity, Features} = part;
-    return (
+    return ( 
        <div>
          <div class="card rounded-none  bg-base-100 shadow-xl lg:w-96 mb-28">
              <figure><img src={img} alt="Shoes" className='w-60' /></figure>
