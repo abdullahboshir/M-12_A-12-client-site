@@ -2,9 +2,10 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
-const Modal = ({price, totalPrice, presesQuantity}) => {
+const Modal = ({price, totalPrice, presesQuantity, minQuan, quantity}) => {
     const [user, loading, error] = useAuthState(auth);
-    console.log(user)
+    
+
     return (
         <div>
 {/* <!-- Put this part before </body> tag --> */}
@@ -12,15 +13,23 @@ const Modal = ({price, totalPrice, presesQuantity}) => {
 <div class="modal">
   <div class="modal-box relative">
     <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <h3 class="text-lg font-bold">Confirm your order</h3>
+    <h3 class="text-2xl font-bold mb-6">Confirm your order</h3>
 
-    <input type="text" disabled value={user.displayName} placeholder="Type here" class="input input-bordered input-accent w-full max-w-xs text-base" />
-    <input type="text" disabled value={user.email} placeholder="Type here" class="input input-bordered input-accent w-full max-w-xs my-2 text-base" />
-    <input type="text" placeholder="Your Address" class="input input-bordered input-accent w-full max-w-xs" />
-    <input type="text" placeholder="Phone Number" class="input input-bordered input-accent w-full max-w-xs my-2" />
+   <div className='flex-col'>
+   <input type="text" disabled value={user.displayName} placeholder="Type here" class="input input-bordered input-accent w-full max-w-sm text-base" />
 
-    <h3 class="text-lg font-bold">displayName</h3>
-    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+    <input type="text" disabled value={user.email} placeholder="Type here" class="input input-bordered input-accent w-full max-w-sm my-2 text-base" />
+
+    <input type="text" placeholder="Your Address" class="input input-bordered input-accent w-full max-w-sm" required />
+
+    <input required type="number" placeholder="Phone Number" class="input input-bordered input-accent w-full max-w-sm my-2" />
+   </div>
+    <h3 class="text-xl font-bold text-start ml-10 text-primary">Per Price: ${price}.00</h3>
+    <h3 class="text-xl font-bold text-start ml-10 text-primary">Total Products: {presesQuantity} Piece</h3>
+    <h3 class="text-xl font-bold text-start ml-10 text-primary">Total Price: ${totalPrice}.00</h3>
+ 
+
+    <button class="btn btn-active btn-secondary text-white bg-slate-700 hover:bg-accent hover:border-transparent flex-start flex ml-10">Purchase</button>
   </div>
 </div>
         </div>
