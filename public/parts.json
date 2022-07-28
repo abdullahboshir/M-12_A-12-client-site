@@ -1,0 +1,53 @@
+[
+    {
+        "id": 1,
+        "name": "Taillights Brandix Z54",
+        "price": 60,
+        "img": "https://i.ibb.co/CBYqW6v/product-11-245x245.jpg",
+        "quantity": 110,
+        "minimuQuantity": 45,
+        "Features": {
+            "Feature1": "Headlights",
+            "Feature2": "Tail Lights",
+            "Feature3": "Fog Lights",
+            "Feature4": "Turn Signals"
+
+        },
+        "descirption": "Many philosophical debates that began in ancient times are still debated today. In one general sense, philosophy is associated with wisdom, intellectual culture and a search for knowledge." 
+
+    },
+    {
+        "id": 2,
+        "name": "Engine & Drivetrain",
+        "price": 2579,
+        "img": "https://i.ibb.co/FBv5zGy/product-13-245x245.jpg",
+        "quantity": 79,
+        "minimuQuantity": 25,
+        "Features": {
+            "Feature1": "Air Filters",
+            "Feature2": "Oxygen Sensors",
+            "Feature3": "Heating",
+            "Feature4": "Cranks & Pistons"
+
+        },
+        "descirption": "Many philosophical debates that began in ancient times are still debated today. In one general sense, philosophy is associated with wisdom, intellectual culture and a search for knowledge." 
+
+    },
+    {
+        "id": 3,
+        "name": "Brandix Brake Kit",
+        "price": 245,
+        "img": "https://i.ibb.co/bBkyVDL/product-2-700x700.jpg",
+        "quantity": 95,
+        "minimuQuantity": 55,
+        "Features": {
+            "Feature1": "750 RPM",
+            "Feature2": " Cordless-Electric",
+            "Feature3": "Lithium",
+            "Feature4": "20 Volts"
+
+        },
+        "descirption": "Many philosophical debates that began in ancient times are still debated today. In one general sense, philosophy is associated with wisdom, intellectual culture and a search for knowledge." 
+
+    }
+]
