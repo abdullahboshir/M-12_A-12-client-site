@@ -2,9 +2,8 @@ import React, { useContext, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Loading from '../../Components/Shared/Loading/Loading';
 import auth from '../../firebase.init';
-import UpdateModal from './UpdateModal';
 import { FcBusinessman } from 'react-icons/fc';
-import { AuthContext, useAuthContext } from '../../Components/AuthContextProvider';
+import UpdateModal from '../../Components/Dashboard-Sections/UpdateModal';
 
 
 

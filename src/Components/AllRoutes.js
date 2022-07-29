@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
+import Blogs from '../Pages/Blogs/Blogs';
 import AddReview from '../Pages/Dashboard/AddReview';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 import MyOrder from '../Pages/Dashboard/MyOrder';
@@ -22,6 +23,7 @@ const AllRoutes = () => {
                 <Route path='home' element={<Home />} />
                 <Route path='login' element={<Login />} />
                 <Route path='signUp' element={<SignUp />} />
+                <Route path='blogs' element={<Blogs />} />
                 
                 <Route path='dashBoard' element={<Dashboard />}>
                 <Route index element={<MyProfile />} />
