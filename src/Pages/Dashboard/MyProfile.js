@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Loading from '../../Components/Shared/Loading/Loading';
 import auth from '../../firebase.init';
 import UpdateModal from './UpdateModal';
 import { FcBusinessman } from 'react-icons/fc';
+import { AuthContext, useAuthContext } from '../../Components/AuthContextProvider';
+
+
 
 const MyProfile = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -11,7 +14,6 @@ const MyProfile = () => {
     const [education, setEducation] = useState('Education Qualification');
     const [location, setLocation] = useState('Your Location');
     const [link, setLink] = useState('Social Link');
-
 
     if(error){
         return <Loading/>
@@ -28,8 +30,8 @@ const MyProfile = () => {
 
 
     return (
-        <div className='text-start flex justify-between items-center w-sreen'>
-            <FcBusinessman className='text-[300px] mr-28 rounded-full'/>
+        <div className='text-start flex justify-between items-center w-[800px] mt-16'>
+            <FcBusinessman className='text-[300px] rounded-full'/>
            <div>
            <h1 className='text-4xl font-bold mb-6'>Profile Informarion</h1>
             <h2 className='text-2xl font-bold '>Name:</h2>

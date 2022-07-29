@@ -2,15 +2,17 @@ import React from 'react';
 
 const MyOrder = () => {
     return (
-        <div class="overflow-x-auto">
-        <table class="table w-sreen">
+        <div class="overflow-x-auto mt-12 px-8">
+        <table class="table w-full">
           {/* <!-- head --> */}
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Date</th>
+              <th>Total Prcie</th>
+              <th>Email</th>
+              <th>Tranzation Id</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>

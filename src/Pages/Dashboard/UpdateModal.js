@@ -1,3 +1,4 @@
+import { async } from '@firebase/util';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
@@ -15,19 +16,30 @@ const UpdateModal = () => {
         setUpdateEducation(updateEducation);
         setUpdateLocation(updateLocation);
         setSocialLink(socialLink);
-    } ,[updateEducation, updateLocation, socialLink])
+    }, [updateEducation, updateLocation, socialLink])
 
 
-    const handleUpdateUser = e => {
+    const handleUpdateUser =  async (e) => {
         e.preventDefault()
-        
+
         const updateUserInfo = {
-            UpdateUrl,
             updateEducation,
             updateLocation,
-            socialLink
+            socialLink,
+            UpdateUrl
+        }
+
+        try{ 
+            
+        }
+        catch{
+    
         }
     }
+
+
+    
+
 
     return (
         <div>
@@ -45,15 +57,17 @@ const UpdateModal = () => {
 
                             <input type="text" disabled value={user?.email} placeholder="Type here" class="input input-bordered input-accent w-full max-w-sm my-2 text-base" />
 
-                            <input onChange={(e) => setUpdateUrl(e.target.files[0])} type="file" required
+                            <input onChange={(e) => setUpdateUrl(e.target.files[0])} type="text" required
                                 placeholder='Profile Image URL' class="input input-bordered input-accent w-full max-w-sm" />
 
                             <input onChange={(e => setUpdateEducation(e.target.value))} required type="text"
                                 placeholder='Education Qualification' class="input input-bordered input-accent w-full max-w-sm my-2" />
 
-                            <input  onChange={(e => setUpdateLocation(e.target.value))}  required type="number" placeholder="Your Location" class="input input-bordered input-accent w-full max-w-sm " />
+                            <input onChange={(e => setUpdateLocation(e.target.value))} required type="number" placeholder="Your Location" class="input input-bordered input-accent w-full max-w-sm " />
+                            
 
-                            <input onChange={(e => setSocialLink(e.target.value))}   required type="number" placeholder="Social Link" class="input input-bordered input-accent w-full max-w-sm my-2" />
+                            <input onChange={(e => setSocialLink(e.target.value))} required type="text" placeholder="Social Link" class="input input-bordered input-accent w-full max-w-sm my-2" />
+                           
 
                             <button class="btn btn-active btn-secondary text-white bg-slate-700 hover:bg-accent hover:border-transparent flex-start flex ml-10  w-40">Purchase</button>
                         </form>
