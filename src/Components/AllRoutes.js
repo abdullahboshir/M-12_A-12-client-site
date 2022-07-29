@@ -24,7 +24,7 @@ const AllRoutes = () => {
                 <Route path='signUp' element={<SignUp />} />
                 
                 <Route path='dashBoard' element={<Dashboard />}>
-                <Route path='myProfile' element={<MyProfile />} />
+                <Route index element={<MyProfile />} />
                 <Route path='myOrder' element={<MyOrder />} />
                 <Route path='addReview' element={<AddReview />} />
                 </Route>

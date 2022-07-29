@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
-const Modal = ({ price, totalPrice, presesQuantity, minQuan, quantity }) => {
+
+
+const Modal = ({ price, totalPrice, presesQuantity }) => {
   const [user, loading, error] = useAuthState(auth);
   const [blankAddress, setBlankAddress] = useState('')
   const [blankPhone, setBlankPhone] = useState('')

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Modal from './Modal';
+import BuyModal from './BuyModal';
 
 const BuyNowUi = ({ singlePart }) => {
     const [updateQuantity, setUpdateQuantity] = useState();
@@ -70,9 +70,9 @@ const BuyNowUi = ({ singlePart }) => {
 
                     <div className='flex justify-end items-center mt-12'>
 
-                        {/* <button onClick={() => <Modal/>} class="btn bg-slate-700 py-0 h-0 text-white hover:bg-secondary hover:border-transparent">Buy Now</button> */}
+                    
                         <label disabled={presesQuantity < minQuan || presesQuantity > quantity } for="my-modal-3" class="btn modal-button bg-slate-700 py-0 h-0 text-white hover:bg-secondary hover:border-transparent">Buy Now</label>
-                        <Modal price={price} totalPrice={totalPrice} presesQuantity={presesQuantity} minQuan={minQuan} quantity={quantity}/>
+                        <BuyModal price={price} totalPrice={totalPrice} presesQuantity={presesQuantity} minQuan={minQuan} quantity={quantity}/>
                     </div>
                 </div>
             </div>
