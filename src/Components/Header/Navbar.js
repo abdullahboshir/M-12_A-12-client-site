@@ -34,7 +34,7 @@ const NavBar = () => {
             {
               user ?
                 <>
-                  <li className='liItem'><NavLink className={({ isActive }) => isActive ? "active-nav" : 'nav-item'} to="/dashBoart">Dashboard</NavLink></li>
+                  <li className='liItem'><NavLink className={({ isActive }) => isActive ? "active-nav" : 'nav-item'} to="/dashBoard">Dashboard</NavLink></li>
                 </>
                 : <></>
             }

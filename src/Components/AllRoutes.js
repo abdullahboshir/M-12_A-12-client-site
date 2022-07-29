@@ -1,6 +1,9 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
+import AddReview from '../Pages/Dashboard/AddReview';
 import Dashboard from '../Pages/Dashboard/Dashboard';
+import MyOrder from '../Pages/Dashboard/MyOrder';
+import MyProfile from '../Pages/Dashboard/MyProfile';
 import Home from '../Pages/Home/Home';
 import Login from '../Pages/Login/Login';
 import SignUp from '../Pages/Login/SignUp';
@@ -19,7 +22,13 @@ const AllRoutes = () => {
                 <Route path='home' element={<Home />} />
                 <Route path='login' element={<Login />} />
                 <Route path='signUp' element={<SignUp />} />
-                <Route path='dashBoart' element={<Dashboard />} />
+                
+                <Route path='dashBoard' element={<Dashboard />}>
+                <Route path='myProfile' element={<MyProfile />} />
+                <Route path='myOrder' element={<MyOrder />} />
+                <Route path='addReview' element={<AddReview />} />
+                </Route>
+             
                 <Route path='buyNow/:partsId' element={
                 <RequireAuth>
                     <BuyNow/>
