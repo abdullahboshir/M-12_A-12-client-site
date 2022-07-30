@@ -16,7 +16,7 @@ const NavBar = () => {
       <div className="nav-container" >
 
         <div className="nav-brand">
-          <img src='https://i.ibb.co/cL4K5NX/kindpng-5437823.png' alt="" />
+          <img src='https://i.ibb.co/TkgS9zP/imajjjjjges-1.png' alt="" />
         </div>
 
         <div className="nav-items">

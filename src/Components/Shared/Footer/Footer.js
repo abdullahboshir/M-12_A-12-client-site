@@ -10,7 +10,7 @@ const Footer = () => {
         <footer class="footer p-10 bg-neutral text-neutral-content">
         <div>
 
-          <img className='w-48' src="https://i.ibb.co/cL4K5NX/kindpng-5437823.png" alt="" />
+          <img className='w-48' src="https://i.ibb.co/TkgS9zP/imajjjjjges-1.png" alt="" />
           <a class="link link-hover text-xs w-48 text-primary">we provide World best services. </a>
           <div className='item'>
                     <p className='flex flex-row items-center my-4'> <HiOutlineLocationMarker className='mr-2 text-xl'/> 914 Nathan Courts Suite 632</p>

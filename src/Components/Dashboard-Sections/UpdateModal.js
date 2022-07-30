@@ -1,7 +1,7 @@
-import { async } from '@firebase/util';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import swal from 'sweetalert';
 
 const UpdateModal = () => {
 
@@ -16,22 +16,25 @@ const UpdateModal = () => {
         setUpdateEducation(updateEducation);
         setUpdateLocation(updateLocation);
         setSocialLink(socialLink);
-    }, [updateEducation, updateLocation, socialLink])
+        setUpdateUrl(UpdateUrl);
+    }, [updateEducation, updateLocation, socialLink, UpdateUrl])
 
 
-    const handleUpdateUser =  async (e) => {
+    const handleUpdateUser =  (e) => {
         e.preventDefault()
 
         const updateUserInfo = {
             updateEducation,
             updateLocation,
             socialLink,
-            UpdateUrl
+            UpdateUrl,
+            profileUser: user.email
         }
-        console.log(updateUserInfo)
+
+
 
         try{ 
-            fetch('', {
+            fetch('http://localhost:5000/profile', {
                 method: 'POST',
                 headers: {
                     'content-type' : 'application/json',
@@ -40,12 +43,26 @@ const UpdateModal = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+
+                swal("Success update your Profile")
             })
         }
-        catch{
-    
+        catch(error){
+            console.log(error)
         }
+
+        try{
+            fetch('http://localhost:5000/profile')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+            
+        } catch(error){
+            console.log(error)
+        }
+
+       ;
     }
 
 
@@ -66,7 +83,7 @@ const UpdateModal = () => {
 
                             <input type="text" disabled value={user?.email} placeholder="Type here" class="input input-bordered input-accent w-full max-w-sm my-2 text-base" />
 
-                            <input onChange={(e) => setUpdateUrl(e.target.files)} type="text" required
+                            <input onChange={(e) => setUpdateUrl(e.target.value)} type="text" required
                                 placeholder='Profile Image URL' class="input input-bordered input-accent w-full max-w-sm" />
 
                             <input onChange={(e => setUpdateEducation(e.target.value))} required type="text"
@@ -78,7 +95,8 @@ const UpdateModal = () => {
                             <input onChange={(e => setSocialLink(e.target.value))} required type="text" placeholder="Social Link" class="input input-bordered input-accent w-full max-w-sm my-2" />
                            
 
-                            <button class="btn btn-active btn-secondary text-white bg-slate-700 hover:bg-accent hover:border-transparent flex-start flex ml-10  w-40">Purchase</button>
+                            <button class="btn btn-active btn-secondary text-white bg-slate-700 hover:bg-accent hover:border-transparent flex-start flex mt-4  w-40 ">Purchase</button>
+                           
                         </form>
 
                     </div>

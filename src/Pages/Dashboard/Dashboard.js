@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import MyProfile from './MyProfile';
+import { useAuthContext } from '../../Components/AuthContextProvider';
+
 
 const Dashboard = () => {
+const user = useAuthContext()
+console.log(user)
+
     return (
         <div class="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />

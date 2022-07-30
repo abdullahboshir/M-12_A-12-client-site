@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import swal from "sweetalert";
 
 
 
@@ -74,7 +75,8 @@ const Modal = ({ price, totalPrice, presesQuantity }) => {
           <h3 class="text-xl font-bold text-start ml-10 text-primary">Total Price: ${totalPrice}.00</h3>
 
 
-          <label onClick={() => handleClick()} for="my-modal-3" class="btn btn-active btn-secondary text-white bg-slate-700 hover:bg-accent hover:border-transparent flex ml-[0]  w-40">Purchase</label>
+          <label onClick={() => handleClick()} for="my-modal-3" class="btn btn-active btn-secondary text-white bg-slate-700 hover:bg-accent hover:border-transparent flex ml-10 mt-2  w-40">Purchase</label>
+
         </div>
       </div>
     </div>

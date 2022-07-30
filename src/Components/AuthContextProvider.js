@@ -6,8 +6,6 @@ const authContext = createContext()
 
 export const AuthContextProvider = ({children}) => {
     
-   
- 
     const [username , setUsername] = useState('')
     const [loading , setLoading] = useState(true)
 
@@ -57,7 +55,7 @@ export const AuthContextProvider = ({children}) => {
 
 
     return (
-        <authContext.Provider value={this.username}>
+        <authContext.Provider value={username}>
             {children}
         </authContext.Provider>
     );

@@ -16,7 +16,7 @@ const Banner = () => {
                             <img src="https://i.ibb.co/zNZDtTG/wallpaperflare-com-wallpaper-2.jpg" class="max-w-sm rounded-lg shadow-2xl max-w-xs" />
                         </div>
                     </div>
-                    <div className='text-white w-3/5 text-start px-6'>
+                    <div className='text-white w-3/5 text-start px-6 ml-6'>
                         <h1 class="text-6xl font-bold text-secondary leading-10">THE WORLD'S
                             <span className='text-white ml-3'>BEST</span> <br /> <span className='text-6xl text-white font-normal'>auto parts</span></h1>
                         <p class="py-4 w-4/5 mt-4 text-slate-300">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>

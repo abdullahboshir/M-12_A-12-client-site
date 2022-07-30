@@ -1,10 +1,13 @@
 import './App.css';
 import AllRoutes from './Components/AllRoutes';
+import { AuthContextProvider } from './Components/AuthContextProvider';
 
 function App() {
   return (
     <div className="App">
-     <AllRoutes/>
+    <AuthContextProvider>
+    <AllRoutes/>
+    </AuthContextProvider>
     </div>
   );
 }
