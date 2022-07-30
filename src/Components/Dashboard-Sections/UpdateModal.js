@@ -6,7 +6,7 @@ import auth from '../../firebase.init';
 const UpdateModal = () => {
 
     const [user, loading, error] = useAuthState(auth);
-    const [UpdateUrl, setUpdateUrl] = useState(null)
+    const [UpdateUrl, setUpdateUrl] = useState('')
     const [updateEducation, setUpdateEducation] = useState('')
     const [updateLocation, setUpdateLocation] = useState('')
     const [socialLink, setSocialLink] = useState('')
@@ -28,17 +28,26 @@ const UpdateModal = () => {
             socialLink,
             UpdateUrl
         }
+        console.log(updateUserInfo)
 
         try{ 
-            
+            fetch('', {
+                method: 'POST',
+                headers: {
+                    'content-type' : 'application/json',
+                },
+                body: JSON.stringify(updateUserInfo)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
         }
         catch{
     
         }
     }
 
-
-    
 
 
     return (
@@ -57,13 +66,13 @@ const UpdateModal = () => {
 
                             <input type="text" disabled value={user?.email} placeholder="Type here" class="input input-bordered input-accent w-full max-w-sm my-2 text-base" />
 
-                            <input onChange={(e) => setUpdateUrl(e.target.files[0])} type="text" required
+                            <input onChange={(e) => setUpdateUrl(e.target.files)} type="text" required
                                 placeholder='Profile Image URL' class="input input-bordered input-accent w-full max-w-sm" />
 
                             <input onChange={(e => setUpdateEducation(e.target.value))} required type="text"
                                 placeholder='Education Qualification' class="input input-bordered input-accent w-full max-w-sm my-2" />
 
-                            <input onChange={(e => setUpdateLocation(e.target.value))} required type="number" placeholder="Your Location" class="input input-bordered input-accent w-full max-w-sm " />
+                            <input onChange={(e => setUpdateLocation(e.target.value))} required type="text" placeholder="Your Location" class="input input-bordered input-accent w-full max-w-sm " />
                             
 
                             <input onChange={(e => setSocialLink(e.target.value))} required type="text" placeholder="Social Link" class="input input-bordered input-accent w-full max-w-sm my-2" />

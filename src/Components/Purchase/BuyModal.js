@@ -6,8 +6,9 @@ import auth from '../../firebase.init';
 
 const Modal = ({ price, totalPrice, presesQuantity }) => {
   const [user, loading, error] = useAuthState(auth);
-  const [blankAddress, setBlankAddress] = useState('')
-  const [blankPhone, setBlankPhone] = useState('')
+  const [blankAddress, setBlankAddress] = useState('');
+  const [blankPhone, setBlankPhone] = useState('');
+
 
   const handeEmailError = e => {
     const blackAddress = (e.target.value);
@@ -46,7 +47,8 @@ const Modal = ({ price, totalPrice, presesQuantity }) => {
   }
 
   return (
-    <div>
+   <form>
+     <div>
       {/* <!-- Put this part before </body> tag --> */}
       <input type="checkbox" id="my-modal-3" class="modal-toggle" />
       <div class="modal">
@@ -72,10 +74,11 @@ const Modal = ({ price, totalPrice, presesQuantity }) => {
           <h3 class="text-xl font-bold text-start ml-10 text-primary">Total Price: ${totalPrice}.00</h3>
 
 
-          <label onClick={() => handleClick()} for="my-modal-3" class="btn btn-active btn-secondary text-white bg-slate-700 hover:bg-accent hover:border-transparent flex-start flex ml-10  w-40">Purchase</label>
+          <label onClick={() => handleClick()} for="my-modal-3" class="btn btn-active btn-secondary text-white bg-slate-700 hover:bg-accent hover:border-transparent flex ml-[0]  w-40">Purchase</label>
         </div>
       </div>
     </div>
+   </form>
   );
 };
 
