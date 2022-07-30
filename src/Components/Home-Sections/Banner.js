@@ -1,19 +1,19 @@
 import React from 'react';
-import banner1 from '../../Assets/wallpaperflare.com_wallpaper (2).jpg';
-import banner2 from '../../Assets/wallpaperflare.com_wallpaper (3).jpg';
+
 
 const Banner = () => {
     return (
-        <div className=' relative  relative w-100vw bg-slate-100' style={{ height: '700px'}}>
-            <div style={{ backgroundImage: "url(https://i.ibb.co/XfHJHKt/banner.jpg)", height: '95vh' }} class="hero bg-base-200 ">
+        <div className=' relative  relative w-100vw bg-slate-100' style={{ height: '700px' }}>
+            <div style={{ backgroundImage: "url(https://i.ibb.co/9qHx8ZD/wallpaperflare-com-wallpaper-12.jpg)", height: '95vh' }} class="hero bg-base-200 ">
                 <div class="hero-overlay bg-opacity-60"></div>
                 <div class="hero-content justify-between flex-col lg:flex-row-reverse p-0">
                     <div className='ps-8 mb-4'>
                         <div className='bg-white p-2 rounded-l-lg mb-6'>
-                            <img src={banner2} class="max-w-sm rounded-lg shadow-2xl max-w-xs" />
+                            <img src="https://i.ibb.co/PMB9Lrz/wallpaperflare-com-wallpaper-3.jpg" class="max-w-sm rounded-lg shadow-2xl max-w-xs" />
                         </div>
                         <div className='bg-white p-2 rounded-l-lg mb-10'>
-                            <img src={banner1} class="max-w-sm rounded-lg shadow-2xl max-w-xs" />
+
+                            <img src="https://i.ibb.co/zNZDtTG/wallpaperflare-com-wallpaper-2.jpg" class="max-w-sm rounded-lg shadow-2xl max-w-xs" />
                         </div>
                     </div>
                     <div className='text-white w-3/5 text-start px-6'>

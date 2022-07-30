@@ -108,8 +108,10 @@ const SignUp = () => {
                             </div>
 
                             <div class="form-control mt-2">
-                                <button onClick={() => signInWithGoogle()} disabled={!agree} class="btn bg-teal-600  text-white hover:bg-teal-500 hover:border-transparent" name="submit">Sign Up</button>
+                                <button onClick={() => signInWithGoogle()} disabled={!agree} class="btn bg-teal-600  text-white hover:bg-teal-500 hover:border-transparent mb-2" name="submit">Sign Up</button>
+
                                 <button class="btn btn-base-500 text-white" name="submit"> <ImGooglePlus2 className="text-18 text-2xl pl-[0] mr-4 text-white text-start" /> Sing in Width Google</button>
+
                                 <p className='text-red-500 text-start'>{errorElement}</p>
                                 <Link className='text-start mt-2 hover:underline' to="/login"><p>Already have an Account</p></Link>
                             </div>
