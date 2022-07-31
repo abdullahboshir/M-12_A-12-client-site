@@ -70,7 +70,6 @@ const AboutMe = () => {
       </div>
 
 
-
       <div className='bg-gray-200 h-[600px] h-sreen flex items-center justify-center text-black flex-col'>
 
         <div className='mb-16 flex flex-col justify-center w-sreen'>

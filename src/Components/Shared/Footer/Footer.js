@@ -7,7 +7,7 @@ import { AiOutlineYahoo } from 'react-icons/ai';
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-neutral text-neutral-content">
+        <footer className="footer p-10 bg-neutral text-neutral-content pl-16 pt-20">
         <div>
 
           <h1 className='text-4xl text-white font-semibold'>Parts<span className='text-secondary'>Zone</span></h1>
