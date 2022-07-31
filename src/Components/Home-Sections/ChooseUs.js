@@ -12,7 +12,7 @@ const ChooseUs = () => {
 
             <div style={{ boxSizing: "border-box", width: "100%", height: "600px" }} className='mb-24 flex pb-24 justify-center items-center h-4/6 relative shadow-lg bg-primary'>
 
-                <div className='bg-slate-600 absolute left-0 top-0' style={{ width: "100%", height: "254px" }}><h1 className='xl'></h1></div>
+                <div className='bg-slate-600 absolute left-0 top-0' style={{ width: "100%", height: "254px" }}></div>
 
                 <div className=" w-52 h-52 rotate-45 rounded-xl bg-base-100 shadow-xl p-0 m-0  ">
                     <div className="card-body -rotate-45 flex justify-center items-center flex-col">

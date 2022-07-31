@@ -15,10 +15,10 @@ const AboutMe = () => {
 
   return (
     <div>
-      <div className="hero min-h-screen" style={{ backgroundImage: "url(https://www.disruptordaily.com/wp-content/uploads/2019/09/Basil-Security-1024x683.jpg)" }}>
+      <div className="hero min-h-screen" style={{ backgroundImage: "url(https://i.ibb.co/ZX62G2w/about-Me-Bg.jpg)" }}>
         <div className="hero-overlay bg-opacity-90"></div>
         <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-4xl border-2 border-slate-500 py-2 px-4 bg-opacity-20 bg-black">
+          <div className="max-w-4xl border-2 border-slate-600 py-2 px-4 bg-opacity-20 bg-black">
             <h1 className="mb-5 text-4xl font-bold text-white mb-0">I'M ABUDLLAH BOSHIR</h1>
             <p className="mb-5 text-primary pb-0 mb-0">Beautiful creative experience in website development.</p>
           </div>
@@ -32,7 +32,7 @@ const AboutMe = () => {
           <p className='text-center'>CREATIVE WEB DEVELOPER</p>
         </div>
         <div className='flex justify-between items-center px-28 text-white'>
-          <div className='w-[700px] text-start ml-12'>
+          <div className='w-[800px] text-start ml-12'>
             <h1 className='text-2xl font-semibold'>ABDULLAH BOSHIR</h1>
             <h2 className='mb-4 text-base font-semibold'>Beautiful creative experience in website development.</h2>
             <p>Hello, I'm Abdulla Boshir. As a Web developer from Bangladesh. actually, Web development is my hobby. I really enjoy this job very much. I have creative experience in website development. and I always like trying to learn something new in this sector. that's why I find Confidence in this Sector. I don’t believe in declarations, I just believe in how much I have been able to satisfy you or the company with my skills.</p>
@@ -62,7 +62,9 @@ const AboutMe = () => {
             </div>
           </div>
 
-          <div className="w-[500px] ml-24"><img className='w-60' src="https://tricky-photoshop.com/wp-content/uploads/2017/08/final-1.png" alt="" /></div>
+          <div className="w-[500px]  ml-40">
+          <img className='w-60 rounded-full border-8 border-base-600' src="https://tricky-photoshop.com/wp-content/uploads/2017/08/final-1.png" alt="" />
+          </div>
 
         </div>
       </div>
@@ -78,44 +80,44 @@ const AboutMe = () => {
 
         <div className='grid grid-cols-4 gap-4 w-[800px]'>
 
-          <div className='mb-4'>
+          <div className='mb-6'>
             <div class="radial-progress text-secondary" style={html}>85%</div>
-            <h1 className='text-xl font-semibold'>HTML5</h1>
+            <h1 className='text-xl font-semibold mt-2'>HTML5</h1>
           </div>
 
           <div>
             <div class="radial-progress text-secondary" style={css}>75%</div>
-            <h1 className='text-xl font-semibold'>CSS3</h1>
+            <h1 className='text-xl font-semibold mt-2'>CSS3</h1>
           </div>
           
           <div>
             <div class="radial-progress text-secondary" style={js}>70%</div>
-            <h1 className='text-xl font-semibold'>JAVASRIPT</h1>
+            <h1 className='text-xl font-semibold mt-2'>JAVASRIPT</h1>
           </div>
 
           <div>
             <div class="radial-progress text-secondary" style={react}>80%</div>
-            <h1 className='text-xl font-semibold'>REACT</h1>
+            <h1 className='text-xl font-semibold mt-2'>REACT</h1>
           </div>
 
           <div>
             <div class="radial-progress text-secondary" style={node}>65%</div>
-            <h1 className='text-xl font-semibold'>NODE</h1>
+            <h1 className='text-xl font-semibold mt-2'>NODE</h1>
           </div>
           <div>
 
             <div class="radial-progress text-secondary" style={mongodb}>55%</div>
-            <h1 className='text-xl font-semibold'>MONGO DB</h1>
+            <h1 className='text-xl font-semibold mt-2'>MONGO DB</h1>
           </div>
 
           <div>
             <div class="radial-progress text-secondary" style={express}>65%</div>
-            <h1 className='text-xl font-semibold'>EXPRESS</h1>
+            <h1 className='text-xl font-semibold mt-2'>EXPRESS</h1>
           </div>
           <div>
 
             <div class="radial-progress text-secondary" style={others}>90%</div>
-            <h1 className='text-xl font-semibold'>OTHERS</h1>
+            <h1 className='text-xl font-semibold mt-2'>OTHERS</h1>
           </div>
 
 
