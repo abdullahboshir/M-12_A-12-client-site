@@ -17,7 +17,7 @@ const OurReviewPart = () => {
   return (
     <div className=" bg-white padding">
       <div className="text-center">
-        <h2 className="text-4xl font-bold  mb-4">
+        <h2 className="text-4xl font-bold  mb-6 text-primary">
           Our Clients Reviews
         </h2>
 
@@ -30,7 +30,6 @@ const OurReviewPart = () => {
          <div>
          {reviewsData?.map((item) => (
             <SwiperSlide>
-              key={item.id}
               <Reviews item={item} key={item.id} />{" "}
             </SwiperSlide>
           ))}

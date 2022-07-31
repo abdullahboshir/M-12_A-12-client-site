@@ -10,7 +10,7 @@ const Footer = () => {
         <footer className="footer p-10 bg-neutral text-neutral-content">
         <div>
 
-          <img className='w-48' src="https://i.ibb.co/TkgS9zP/imajjjjjges-1.png" alt="" />
+          <h1 className='text-4xl text-white font-semibold'>Parts<span className='text-secondary'>Zone</span></h1>
           <a className="link link-hover text-xs w-48 text-primary">we provide World best services. </a>
           <div className='item'>
                     <p className='flex flex-row items-center my-4'> <HiOutlineLocationMarker className='mr-2 text-xl'/> 914 Nathan Courts Suite 632</p>

@@ -27,7 +27,7 @@ const PartsUi = ({part}) => {
             <li className='w-48'>{Features.Feature4}</li>
             </h2>
 
-           <div className='flex justify-between items-center mt-12'>
+           <div className='flex justify-between items-center mt-10'>
            <h2 className="card-title text-lg">Price: <span className='text-secondary'>${price}.00</span></h2>
            <button className="btn bg-slate-700 py-0 h-0 text-white hover:bg-secondary hover:border-transparent" onClick={() => handleBuyNow(_id)}>Buy Now</button>
            </div>
