@@ -20,7 +20,7 @@ const MyProfile = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/profile')
+        fetch('https://sheltered-garden-04106.herokuapp.com/profile')
         .then(res => res.json())
         .then(data => setProfileUser(data))
        }, [])

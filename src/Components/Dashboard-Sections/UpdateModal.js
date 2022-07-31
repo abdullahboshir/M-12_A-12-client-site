@@ -32,7 +32,7 @@ const UpdateModal = () => {
             profileUser: user.email
         }
         try{ 
-            fetch('http://localhost:5000/profile', {
+            fetch('https://sheltered-garden-04106.herokuapp.com/profile', {
                 method: 'POST',
                 headers: {
                     'content-type' : 'application/json',
@@ -50,7 +50,7 @@ const UpdateModal = () => {
         }
 
         try{
-            fetch('http://localhost:5000/profile')
+            fetch('https://sheltered-garden-04106.herokuapp.com/profile')
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -62,7 +62,7 @@ const UpdateModal = () => {
         }
         try{
          
-                fetch(`http://localhost:5000/profile/${user.email}`)
+                fetch(`https://sheltered-garden-04106.herokuapp.com/profile/${user.email}`)
                     .then(res => res.json())
                     .then(data => setUpdateProfile(data))
           

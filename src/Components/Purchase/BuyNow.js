@@ -8,7 +8,7 @@ const BuyNow = () => {
     const [singlePart, setSinglePart] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${partsId}`)
+        fetch(`https://sheltered-garden-04106.herokuapp.com/products/${partsId}`)
         .then(res => res.json())
         .then(data => setSinglePart(data))
     }, [singlePart, partsId]) 
