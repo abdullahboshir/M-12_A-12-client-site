@@ -6,6 +6,7 @@ import AddReview from '../Pages/Dashboard/AddReview';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 import MyOrder from '../Pages/Dashboard/MyOrder';
 import MyProfile from '../Pages/Dashboard/MyProfile';
+import ProfileInfo from '../Pages/Dashboard/ProfileInfo';
 import Home from '../Pages/Home/Home';
 import Login from '../Pages/Login/Login';
 import SignUp from '../Pages/Login/SignUp';
@@ -29,6 +30,7 @@ const AllRoutes = () => {
                 
                 <Route path='dashBoard' element={<Dashboard />}>
                 <Route index element={<MyProfile />} />
+                <Route path='profileInfo/:profileUser' element={<ProfileInfo />} />
                 <Route path='myOrder' element={<MyOrder />} />
                 <Route path='addReview' element={<AddReview />} />
                 </Route>

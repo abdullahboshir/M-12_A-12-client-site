@@ -71,33 +71,33 @@ const SignUp = () => {
 
 
 
-        <div class="hero min-h-screen bg-base-200">
-            <div class="hero-content  lg:flex-row-reverse flex justify-between px-28">
-                <div class="text-center lg:text-left w-[50%] text-center flex flex-col justify-center items-center">
+        <div className="hero min-h-screen bg-base-200">
+            <div className="hero-content  lg:flex-row-reverse flex justify-between px-28">
+                <div className="text-center lg:text-left w-[50%] text-center flex flex-col justify-center items-center">
                     <div className="h-[70px] mt-6">
-                        <h1 class="text-5xl font-bold text-center">Sign Up Now!</h1>
-                        <p class="pt-2 text-center">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi.</p>
+                        <h1 className="text-5xl font-bold text-center">Sign Up Now!</h1>
+                        <p className="pt-2 text-center">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi.</p>
                     </div>
                     <img className='w-[400px]  mt-0 ' src="https://i.ibb.co/2FSTm4z/Developer-activity-bro.png" alt="" />
                 </div>
-                <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <div class="card-body">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card-body">
 
                         <form onSubmit={handlesignup} id="login">
 
-                            <div class="form-control">
-                                <input type="text" name='name' placeholder="Your Name" class="input input-bordered" />
+                            <div className="form-control">
+                                <input type="text" name='name' placeholder="Your Name" className="input input-bordered" />
                             </div>
-                            <div class="form-control my-2">
-                                <input type="email" name='email' placeholder="email" class="input input-bordered" />
+                            <div className="form-control my-2">
+                                <input type="email" name='email' placeholder="email" className="input input-bordered" />
                             </div>
 
                             <div className="form-control">
-                                <input name='password' type="password" placeholder="password" class="input input-bordered" />
+                                <input name='password' type="password" placeholder="password" className="input input-bordered" />
                             </div>
 
                             <div className="form-control mt-2">
-                                <input name='confirmPassword' type="password" placeholder="Confirm Password" class="input input-bordered" />
+                                <input name='confirmPassword' type="password" placeholder="Confirm Password" className="input input-bordered" />
                             </div>
 
                             <div>
@@ -107,10 +107,10 @@ const SignUp = () => {
                                 }
                             </div>
 
-                            <div class="form-control mt-2">
-                                <button onClick={() => signInWithGoogle()} disabled={!agree} class="btn bg-teal-600  text-white hover:bg-teal-500 hover:border-transparent mb-2" name="submit">Sign Up</button>
+                            <div className="form-control mt-2">
+                                <button onClick={() => signInWithGoogle()} disabled={!agree} className="btn bg-teal-600  text-white hover:bg-teal-500 hover:border-transparent mb-2" name="submit">Sign Up</button>
 
-                                <button class="btn btn-base-500 text-white" name="submit"> <ImGooglePlus2 className="text-18 text-2xl pl-[0] mr-4 text-white text-start" /> Sing in Width Google</button>
+                                <button className="btn btn-base-500 text-white" name="submit"> <ImGooglePlus2 className="text-18 text-2xl pl-[0] mr-4 text-white text-start" /> Sing in Width Google</button>
 
                                 <p className='text-red-500 text-start'>{errorElement}</p>
                                 <Link className='text-start mt-2 hover:underline' to="/login"><p>Already have an Account</p></Link>

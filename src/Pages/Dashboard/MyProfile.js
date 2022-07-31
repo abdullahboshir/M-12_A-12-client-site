@@ -26,9 +26,6 @@ const MyProfile = () => {
        }, [])
      
 
-  
-    
-
     if(error){
         return <Loading/>
     }

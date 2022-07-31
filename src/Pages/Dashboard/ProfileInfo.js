@@ -4,10 +4,11 @@ import Loading from '../../Components/Shared/Loading/Loading';
 import { FcBusinessman } from 'react-icons/fc';
 import UpdateModal from '../../Components/Dashboard-Sections/UpdateModal';
 import auth from '../../firebase.init';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ProfileInfo = ({ location, education, link, proUser }) => {
     const [user, loading, error] = useAuthState(auth);
-
+    const {profileUser} = useParams();
     const [updateProfile, setUpdateProfile] = useState({})
     const [matchUpdateProfile, setmatchUpdateProfile] = useState({})
 
@@ -16,30 +17,19 @@ const ProfileInfo = ({ location, education, link, proUser }) => {
         updateLocation: location,
         socialLink: link,
         UpdateUrl: '',
-        profileUser: user.email
+        profileUser: user?.email
     }
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/profile/${user.email}`)
-            .then(res => res.json())
-            .then(data => setUpdateProfile(data))
-    }, [updateProfile])
+        const url = `https://desolate-falls-12074.herokuapp.com/products/${profileUser}`;
+        fetch(url)
+        .then(res => res.json())
+        .then(data => setUpdateProfile(data))
+    }, [profileUser]);
+  
 
-
-
-    useEffect(() => {
-        fetch('', {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updateUser)
-        })
-            .then(res => res.json)
-            .then(data => setmatchUpdateProfile(data))
-    }, [])
-
+    
 
 
     return (
@@ -63,7 +53,7 @@ const ProfileInfo = ({ location, education, link, proUser }) => {
                     <h2 className='text-2xl font-bold'>Social Link:</h2>
                     <p>{link}</p>
 
-                    <label for="update-modal" class="btn modal-button bg-slate-700 mt-4  text-white hover:bg-secondary hover:border-transparent">Update Your Profile</label>
+                    <label  for="update-modal" className="btn modal-button bg-slate-700 mt-4  text-white hover:bg-secondary hover:border-transparent">Update Your Profile</label>
                     <UpdateModal />
                 </div>
 

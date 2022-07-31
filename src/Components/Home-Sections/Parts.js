@@ -10,7 +10,7 @@ const Parts = () => {
              <h1 className='text-5xl font-bold'>CHECK OUR PARTS</h1>
             <div className='flex justify-evenly bg-slate-100 pt-10'>
             {
-                partsData.map(part => <PartsUi key={part.id} part={part} />)
+                partsData.map(part => <PartsUi key={part._id} part={part} />)
             }
         </div>
         </div>

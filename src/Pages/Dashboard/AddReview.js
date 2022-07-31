@@ -6,6 +6,7 @@ const AddReview = () => {
     const possibleRate = [1,2,3,4,5]
     const [dase , setDase] = useState('')
     const [selectedRate , setSelectedRate] = useState(1)
+    console.log(dase)
     // const {username} = useAuthContext()
     //  const {displayName, email ,  photoURL} = username
 
@@ -31,14 +32,14 @@ const AddReview = () => {
 
 
     return (
-        <div className='flex justify-center items-center mt-20 px-5'>
+        <div className='flex justify-center items-center mt-20 px-5 w-[800px]'>
             <div className='w-full'>
                 <span className='text-primary text-2xl mb-3 inline-block'>Give a Review </span>
                <div className='flex my-4'>
 
-                <div class="rating">
+                <div className="rating">
                     {
-                        possibleRate.map(rate =>  <input onClick={()=> setSelectedRate(rate)}  value='2'  type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" />)
+                        possibleRate.map(rate =>  <input onClick={()=> setSelectedRate(rate)}  value='2'  type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />)
                     }
                </div>
 

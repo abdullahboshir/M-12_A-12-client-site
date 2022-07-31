@@ -5,8 +5,8 @@ import { useAuthContext } from '../../Components/AuthContextProvider';
 const MyOrder = () => {
 
     return (
-        <div class="overflow-x-auto mt-12 px-8">
-        <table class="table w-full">
+        <div className="overflow-x-auto mt-12 px-8">
+        <table className="table w-full">
           {/* <!-- head --> */}
           <thead>
             <tr>

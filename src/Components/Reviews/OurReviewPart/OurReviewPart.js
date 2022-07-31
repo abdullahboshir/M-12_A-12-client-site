@@ -30,7 +30,8 @@ const OurReviewPart = () => {
          <div>
          {reviewsData?.map((item) => (
             <SwiperSlide>
-              <Reviews item={item} />{" "}
+              key={item.id}
+              <Reviews item={item} key={item.id} />{" "}
             </SwiperSlide>
           ))}
          </div>
