@@ -14,6 +14,7 @@ const MyProfile = () => {
     const [education, setEducation] = useState('Education Qualification');
     const [location, setLocation] = useState('Your Location');
     const [link, setLink] = useState('Social Link');
+    
     const [profileUser, setProfileUser] = useState([])
 
 
@@ -30,14 +31,14 @@ const MyProfile = () => {
         return <Loading/>
     }
 
-
     return (
        <div>
-    
-     
-            <ProfileInfo user={user} education={education} location={location} link={link}/>
-         
-     
+          <div>
+          <ProfileInfo user={user} education={education} location={location} link={link} profileUser={profileUser} />
+          </div>
+            <div>
+            <UpdateModal setPic={setPic} setEducation={setEducation} setLocation={setLocation} setLink={setLink} pic={pic} education={education} location={location} link={link} />
+            </div>
        </div>
     );
 };

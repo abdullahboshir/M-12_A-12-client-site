@@ -1,29 +1,34 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
+import auth from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const AddReview = () => {
+    const [user, loading, error] = useAuthState(auth);
     const possibleRate = [1,2,3,4,5]
-    const [dase , setDase] = useState('')
-    const [selectedRate , setSelectedRate] = useState(1)
-    console.log(dase)
-    // const {username} = useAuthContext()
-    //  const {displayName, email ,  photoURL} = username
+    const [comment , setComment] = useState('')
+    const [selectedRate , setSelectedRate] = useState(1);
 
+   const localDate =  new Date().toLocaleDateString();
+
+
+    const selectRate = selectedRate+".00/5.00";
     const reviewPost = {
-        // name : username?.displayName,
-        // email : username?.email,
-        // rating : selectedRate,
-        // dese : dase,
-        // image : username?.photoURL,
+        name : user?.displayName,
+        email : user?.email,
+        rating : selectRate,
+        body : comment,
+        img :user?.photoURL,
+        date: localDate
 
     }
 
     const handleSubmitReview =async (e)=>{
         e.preventDefault()
-       await axios.post(`https://tranquil-shelf-42201.herokuapp.com/api/review`,reviewPost )
+       await axios.post(`http://localhost:5000/reviews`,reviewPost )
         .then(res => (res))
-        setDase('')
+        setComment('')
         swal("add to review success");
 
         setSelectedRate(1)
@@ -45,7 +50,7 @@ const AddReview = () => {
 
                </div>
                 <form onSubmit={handleSubmitReview}>
-                    <textarea onChange={(e)=> setDase(e.target.value)} value={dase} className="textarea border-2 mb-4  w-full border-primary" placeholder="Bio"></textarea>
+                    <textarea onChange={(e)=> setComment(e.target.value)} value={comment} className="textarea border-2 mb-4  w-full border-primary" placeholder="Bio"></textarea>
                     <button className='bg-secondary text-white font-bold px-4 py-2 rounded-md'>Submit Review</button>
                 </form>
             </div>

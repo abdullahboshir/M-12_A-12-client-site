@@ -19,14 +19,13 @@ const Reviews = ({ item }) => {
 
     <div className='rating flex flex-col'>
     {
-       rating === '4.50/5.00' ?
+       rating === '5.00/5.00' ?
         <div className="flex flex-row text-black">
         <AiFillStar/>
         <AiFillStar/>
         <AiFillStar/>
         <AiFillStar/>
-        <BsStarHalf/>
-        {/* <AiOutlineStar /> */}
+        <AiFillStar/>
         </div>
        : rating === '4.00/5.00' ?
          <div  className="flex flex-row text-black" >
@@ -34,15 +33,19 @@ const Reviews = ({ item }) => {
         <AiFillStar/>
         <AiFillStar/>
         <AiFillStar/>
-        <AiOutlineStar />
       </div>
-      : <div  className="flex flex-row text-black">
+      : rating === '3.00/5.00' ? 
+      <div  className="flex flex-row text-black">
       <AiFillStar/>
       <AiFillStar/>
       <AiFillStar/>
-      <AiFillStar/>
-      <AiFillStar/>
-    </div>
+    </div> : rating === '2.00/5.00' ? 
+     <div  className="flex flex-row text-black">
+     <AiFillStar/>
+     <AiFillStar/>
+   </div>
+   : <div>
+   <AiFillStar/></div>
     }
     <p>{rating}</p>
 
@@ -53,7 +56,7 @@ const Reviews = ({ item }) => {
   </div>
   </div>
 
-  <h3 className="text-[19px] text-start font-semibold mt-6">{body.length > 30? body.slice(0, 30) + "." : ""}</h3>
+  <h3 className="text-[19px] text-start font-semibold mt-6">{body.length > 20? body.slice(0, 30) + "." : ""}</h3>
 
   <div className='comment-details text-start mt-2'>
    <p className="mb-6 text-black" title={body}>

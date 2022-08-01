@@ -18,7 +18,7 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     const [signInWithGoogle] = useSignInWithGoogle(auth);
-    const [signInWithGithub] = useSignInWithGithub(auth);
+   
 
     let errorElement;
     if (error) {

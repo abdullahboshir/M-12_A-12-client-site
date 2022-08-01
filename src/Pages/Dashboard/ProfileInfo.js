@@ -8,30 +8,28 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const ProfileInfo = ({ location, education, link, proUser }) => {
     const [user, loading, error] = useAuthState(auth);
-    const {profileUser} = useParams();
-    const [updateProfile, setUpdateProfile] = useState({})
-    const [matchUpdateProfile, setmatchUpdateProfile] = useState({})
 
-    const updateUser = {
-        updateEducation: education,
-        updateLocation: location,
-        socialLink: link,
-        UpdateUrl: '',
-        profileUser: user?.email
-    }
+    // const {profileUser} = useParams();
+    // const [updateProfile, setUpdateProfile] = useState({})
+    // const [matchUpdateProfile, setmatchUpdateProfile] = useState({})
+
+    // const updateUser = {
+    //     updateEducation: education,
+    //     updateLocation: location,
+    //     socialLink: link,
+    //     UpdateUrl: '',
+    //     profileUser: user?.email
+    // }
 
 
-    useEffect(() => {
-        const url = `https://desolate-falls-12074.herokuapp.com/products/${profileUser}`;
-        fetch(url)
-        .then(res => res.json())
-        .then(data => setUpdateProfile(data))
-    }, [profileUser]);
-  
-
+    // useEffect(() => {
+    //     const url = `https://desolate-falls-12074.herokuapp.com/products/${profileUser}`;
+    //     fetch(url)
+    //     .then(res => res.json())
+    //     .then(data => setUpdateProfile(data))
+    // }, [profileUser]);
     
-
-
+  
     return (
         <div>
             <div className='text-start flex justify-between items-center w-[800px] mt-16'>
@@ -54,7 +52,7 @@ const ProfileInfo = ({ location, education, link, proUser }) => {
                     <p>{link}</p>
 
                     <label  for="update-modal" className="btn modal-button bg-slate-700 mt-4  text-white hover:bg-secondary hover:border-transparent">Update Your Profile</label>
-                    <UpdateModal />
+                   
                 </div>
 
             </div>

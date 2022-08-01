@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { useAuthContext } from '../../Components/AuthContextProvider';
 
 
 const Dashboard = () => {
-const user = useAuthContext()
-console.log(user)
+
 
     return (
         <div className="drawer drawer-mobile">

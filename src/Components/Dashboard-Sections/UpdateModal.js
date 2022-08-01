@@ -3,7 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import swal from 'sweetalert';
 
-const UpdateModal = () => {
+const UpdateModal = ({setLink, setPic, setEducation, setLocation, pic, education, location, link, profileUser}) => {
 
     const [user, loading, error] = useAuthState(auth);
     const [UpdateUrl, setUpdateUrl] = useState('')
@@ -13,67 +13,45 @@ const UpdateModal = () => {
     const [UpdateProfile,setUpdateProfile] = useState()
 
 
-    useEffect(() => {
-        setUpdateEducation(updateEducation);
-        setUpdateLocation(updateLocation);
-        setSocialLink(socialLink);
-        setUpdateUrl(UpdateUrl);
-    }, [updateEducation, updateLocation, socialLink, UpdateUrl])
+    // useEffect(() => {
+    //     setUpdateEducation(updateEducation);
+    //     setUpdateLocation(updateLocation);
+    //     setSocialLink(socialLink);
+    //     setUpdateUrl(UpdateUrl);
+    // }, [updateEducation, updateLocation, socialLink, UpdateUrl])
 
 
     const handleUpdateUser =  (e) => {
         e.preventDefault()
 
         const updateUserInfo = {
-            updateEducation,
-            updateLocation,
-            socialLink,
-            UpdateUrl,
+            updateEducation: education,
+            updateLocation: location,
+            socialLink: link,
+            UpdateUrl: pic,
             profileUser: user.email
         }
-        try{ 
-            fetch('https://sheltered-garden-04106.herokuapp.com/profile', {
-                method: 'POST',
-                headers: {
-                    'content-type' : 'application/json',
-                },
-                body: JSON.stringify(updateUserInfo)
-            })
-            .then(res => res.json())
-            .then(data => {
 
-                swal("Success update your Profile")
-            })
-        }
-        catch(error){
-            console.log(error)
-        }
+        // try{ 
+        //     fetch('https://sheltered-garden-04106.herokuapp.com/profile', {
+        //         method: 'POST',
+        //         headers: {
+        //             'content-type' : 'application/json',
+        //         },
+        //         body: JSON.stringify(updateUserInfo)
+        //     })
+        //     .then(res => res.json())
+        //     .then(data => {
 
+        //         swal("Success update your Profile")
+        //     })
+        // }
+        // catch(error){
+        //     console.log(error)
+        // }
+        
         try{
-            fetch('https://sheltered-garden-04106.herokuapp.com/profile')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-            })
-            
-        }
-         catch(error){
-            console.log(error)
-        }
-        try{
-         
-                fetch(`https://sheltered-garden-04106.herokuapp.com/profile/${user.email}`)
-                    .then(res => res.json())
-                    .then(data => setUpdateProfile(data))
-          
-        }
-        catch(error){
-            console.log(error)
-        }
-        try{
- 
-  
-        fetch('', {
+        fetch(`https://sheltered-garden-04106.herokuapp.com/profile/${user.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -82,6 +60,7 @@ const UpdateModal = () => {
         })
             .then(res => res.json)
             .then(data => {
+                swal("Success update your Profile")
                 console.log(data)
             })
         }
@@ -110,16 +89,16 @@ const UpdateModal = () => {
 
                             <input type="text" disabled value={user?.email} placeholder="Type here" className="input input-bordered input-accent w-full max-w-sm my-2 text-base" />
 
-                            <input onChange={(e) => setUpdateUrl(e.target.value)} type="text" required
+                            <input onChange={(e) => setPic(e.target.value)} type="text" required
                                 placeholder='Profile Image URL' className="input input-bordered input-accent w-full max-w-sm" />
 
-                            <input onChange={(e => setUpdateEducation(e.target.value))} required type="text"
+                            <input onChange={(e => setEducation(e.target.value))} required type="text"
                                 placeholder='Education Qualification' className="input input-bordered input-accent w-full max-w-sm my-2" />
 
-                            <input onChange={(e => setUpdateLocation(e.target.value))} required type="text" placeholder="Your Location" className="input input-bordered input-accent w-full max-w-sm " />
+                            <input onChange={(e => setLocation(e.target.value))} required type="text" placeholder="Your Location" className="input input-bordered input-accent w-full max-w-sm " />
                             
 
-                            <input onChange={(e => setSocialLink(e.target.value))} required type="text" placeholder="Social Link" className="input input-bordered input-accent w-full max-w-sm my-2" />
+                            <input onChange={(e => setLink(e.target.value))} required type="text" placeholder="Social Link" className="input input-bordered input-accent w-full max-w-sm my-2" />
                            
 
                             <button className="btn btn-active btn-secondary text-white bg-slate-700 hover:bg-accent hover:border-transparent flex-start flex mt-4  w-40 ">Purchase</button>
