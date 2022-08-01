@@ -12,7 +12,7 @@ const AddReview = () => {
 
    const localDate =  new Date().toLocaleDateString();
 
-
+console.log(user )
     const selectRate = selectedRate+".00/5.00";
     const reviewPost = {
         name : user?.displayName,
@@ -24,33 +24,35 @@ const AddReview = () => {
 
     }
 
+
     const handleSubmitReview =async (e)=>{
         e.preventDefault()
-       await axios.post(`http://localhost:5000/reviews`,reviewPost )
+
+            await axios.post(`http://localhost:5000/reviews`,reviewPost )
         .then(res => (res))
         setComment('')
         swal("add to review success");
-
-        setSelectedRate(1)
-
+        setSelectedRate(1)  
     }
 
+
+   
 
     return (
         <div className='flex justify-center items-center mt-20 px-5 w-[800px]'>
             <div className='w-full'>
-                <span className='text-primary text-2xl mb-3 inline-block'>Give a Review </span>
+                <span className='text-[#03BCBE] text-4xl mb-3 inline-block font-semibold'>Give a Review </span>
                <div className='flex my-4'>
 
                 <div className="rating">
                     {
-                        possibleRate.map(rate =>  <input onClick={()=> setSelectedRate(rate)}  value='2'  type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />)
+                        possibleRate.map(rate =>  <input onClick={()=> setSelectedRate(rate)}  value='2'  type="radio" name="rating-4" className="mask mask-star-2 bg-[#03BCBE]" />)
                     }
                </div>
 
                </div>
                 <form onSubmit={handleSubmitReview}>
-                    <textarea onChange={(e)=> setComment(e.target.value)} value={comment} className="textarea border-2 mb-4  w-full border-primary" placeholder="Bio"></textarea>
+                    <textarea onChange={(e)=> setComment(e.target.value)} value={comment} className="textarea border-2 mb-4  w-full border-primary" placeholder="Review"></textarea>
                     <button className='bg-secondary text-white font-bold px-4 py-2 rounded-md'>Submit Review</button>
                 </form>
             </div>
