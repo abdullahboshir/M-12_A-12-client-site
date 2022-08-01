@@ -7,7 +7,7 @@ import { format } from 'date-fns';
 
 
 
-const Modal = ({ price, totalPrice, presesQuantity }) => {
+const Modal = ({ price, totalPrice, presesQuantity, setModalSwitch }) => {
   const [user, loading, error] = useAuthState(auth);
   const formattedDate = format(new Date() , 'PP')
  
@@ -36,7 +36,7 @@ const Modal = ({ price, totalPrice, presesQuantity }) => {
     await axios.post('http://localhost:5000/userOrderData', customerOderInfo)
     .then(res => (res))
     swal('Your Order is Success')
-
+    setModalSwitch(null)
   }
 
 

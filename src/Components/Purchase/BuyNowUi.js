@@ -3,12 +3,15 @@ import React, { useEffect, useState } from 'react';
 import BuyModal from './BuyModal';
 
 const BuyNowUi = ({ singlePart }) => {
-    const [updateQuantity, setUpdateQuantity] = useState();
+    const [modalSwitch, setModalSwitch] = useState('')
     const [quantityError, setQuantityError] = useState();
     const buyDate = format(new Date() , 'PP')
-
     const { _id, name, img, price, quantity, minimuQuantity, Features, descirption } = singlePart;
 
+   
+const closeModal = {
+    close: 'close'
+}
 
     const minQuan = minimuQuantity;
 
@@ -72,8 +75,14 @@ const BuyNowUi = ({ singlePart }) => {
 
                     <div className='flex justify-end items-center mt-12'>
 
-                        <label disabled={presesQuantity < minQuan || presesQuantity > quantity } for="my-modal-3" className="btn modal-button bg-slate-700 py-0 h-0 text-white hover:bg-secondary hover:border-transparent">Buy Now</label>
-                        <BuyModal price={price} totalPrice={totalPrice} presesQuantity={presesQuantity} minQuan={minQuan} quantity={quantity}/>
+                       {
+                         <label onClick={() => setModalSwitch(closeModal)} disabled={presesQuantity < minQuan || presesQuantity > quantity } for="my-modal-3" className="btn modal-button bg-slate-700 py-0 h-0 text-white hover:bg-secondary hover:border-transparent">Buy Now</label>
+                       }
+                       
+                       {
+                        modalSwitch && <BuyModal setModalSwitch={setModalSwitch} setPresesQuantity={setPresesQuantity} price={price} totalPrice={totalPrice} presesQuantity={presesQuantity} minQuan={minQuan} quantity={quantity}/>
+                       }
+                       
                     </div>
                 </div> 
             </div>
