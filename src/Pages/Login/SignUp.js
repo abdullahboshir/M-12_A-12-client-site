@@ -3,12 +3,16 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { ImGooglePlus2 } from 'react-icons/im';
+import useToken from '../../hooks/useToken';
+import Loading from '../../Components/Shared/Loading/Loading';
 
 const SignUp = () => {
     const navigate = useNavigate()
     const [agree, setAgree] = useState(false);
     const location = useLocation();
-    const [signInWithGoogle] = useSignInWithGoogle(auth);
+ 
+
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
     const [
         createUserWithEmailAndPassword,
@@ -16,6 +20,8 @@ const SignUp = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+
+    const [token] = useToken(user || gUser)
 
     const handlesignup = event => {
         event.preventDefault()
@@ -32,6 +38,10 @@ const SignUp = () => {
 
     if (user) {
         navigate(from, { replace: true });
+    }
+
+    if(gLoading || loading){
+        return <Loading/>
     }
 
     let errorElement;
