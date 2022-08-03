@@ -47,7 +47,7 @@ const NavBar = () => {
           <ul>
             {
               user ? <li className='liItem'>
-                <button className={({ isActive }) => isActive ? "active-nav" : 'nav-item'} onClick={() => { signOut(auth) }}>SignOut</button>
+                <button className={({ isActive }) => isActive ? "active-nav" : 'nav-item'} onClick={() => { signOut(auth); localStorage.removeItem('accessToken')}}>SignOut</button>
               </li> :
                 <li className='liItem'>
                   <NavLink className={({ isActive }) => isActive ? "active-nav" : 'nav-item'} to="/login">Login</NavLink>

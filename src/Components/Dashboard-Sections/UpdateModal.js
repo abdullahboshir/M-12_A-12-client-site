@@ -79,7 +79,7 @@ const UpdateModal = ({setLink, setPic, setEducation, setLocation, pic, education
             <input type="checkbox" id="update-modal" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box relative">
-                    <label for="update-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label htmlFor="update-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="text-2xl font-bold mb-6">Confirm your order</h3>
 
                     <div className='flex-col'>

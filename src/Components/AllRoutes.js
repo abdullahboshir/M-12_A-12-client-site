@@ -1,8 +1,10 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import AboutMe from '../Pages/About Me/AboutMe';
+import MakeAdmin from '../Pages/Admin Panel/MakeAdmin';
 import Blogs from '../Pages/Blogs/Blogs';
 import AddReview from '../Pages/Dashboard/AddReview';
+import Allusers from '../Pages/Dashboard/Allusers';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 import MyOrder from '../Pages/Dashboard/MyOrder';
 import MyProfile from '../Pages/Dashboard/MyProfile';
@@ -27,20 +29,47 @@ const AllRoutes = () => {
                 <Route path='signUp' element={<SignUp />} />
                 <Route path='blogs' element={<Blogs />} />
                 <Route path='aboutMe' element={<AboutMe />} />
-                
+
                 <Route path='dashBoard' element={<Dashboard />}>
-                <Route index element={<MyProfile />} />
-                <Route path='profileInfo/:profileUser' element={<ProfileInfo />} />
-                <Route path='myOrder' element={<MyOrder />} />
-                <Route path='addReview' element={<AddReview />} />
+                    <Route index element={
+                        <RequireAuth>
+                            <MyProfile />
+                        </RequireAuth>
+                    } />
+                    <Route path='profileInfo/:profileUser' element={
+                        <RequireAuth>
+                            <ProfileInfo />
+                        </RequireAuth>
+                    } />
+                    <Route path='myOrder' element={
+                        <RequireAuth>
+                            <MyOrder />
+                        </RequireAuth>
+                    } />
+                    <Route path='addReview' element={
+                        <RequireAuth>
+                            <AddReview />
+                        </RequireAuth>
+                    } />
+
+                    <Route path='AllUsers' element={
+                        <RequireAuth>
+                            <Allusers />
+                        </RequireAuth>
+                    } />
+
                 </Route>
-             
+
+
+
                 <Route path='buyNow/:partsId' element={
-                <RequireAuth>
-                    <BuyNow/>
-                </RequireAuth>
+                    <RequireAuth>
+                        <BuyNow />
+                    </RequireAuth>
                 } />
+
                 <Route path='*' element={<NotFount />} />
+
             </Routes>
             <Footer />
         </div>

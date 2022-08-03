@@ -20,7 +20,8 @@ const closeModal = {
     }, [minQuan])
 
     const [presesQuantity, setPresesQuantity] = useState(minimuQuantity)
-
+    const totalPrice = price * presesQuantity;
+    
     const handleQuantity = e => {
         const re = /^[0-9\b]+$/;
         if (e.target.value === "" || re.test(e.target.value)) {
@@ -42,7 +43,7 @@ const closeModal = {
         }
     }, [presesQuantity])
 
-    const totalPrice = price * presesQuantity;
+
 
     return (
         <div className='flex justify-center items-center h-screen w-100vw'>
@@ -76,7 +77,7 @@ const closeModal = {
                     <div className='flex justify-end items-center mt-12'>
 
                        {
-                         <label onClick={() => setModalSwitch(closeModal)} disabled={presesQuantity < minQuan || presesQuantity > quantity } for="my-modal-3" className="btn modal-button bg-slate-700 py-0 h-0 text-white hover:bg-secondary hover:border-transparent">Buy Now</label>
+                         <label onClick={() => setModalSwitch(closeModal)} disabled={presesQuantity < minQuan || presesQuantity > quantity } htmlFor="my-modal-3" className="btn modal-button bg-slate-700 py-0 h-0 text-white hover:bg-secondary hover:border-transparent">Buy Now</label>
                        }
                        
                        {

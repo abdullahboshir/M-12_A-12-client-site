@@ -28,7 +28,7 @@ console.log(user )
     const handleSubmitReview =async (e)=>{
         e.preventDefault()
 
-            await axios.post(`http://localhost:5000/reviews`,reviewPost )
+            await axios.post(`https://sheltered-garden-04106.herokuapp.com/reviews`,reviewPost )
         .then(res => (res))
         setComment('')
         swal("add to review success");

@@ -8,7 +8,7 @@ const OurReviewPart = () => {
  const [reviewsData, setreviewsData] = useState([]);
 
   useEffect(() => {
-      fetch("http://localhost:5000/reviews")
+      fetch("https://sheltered-garden-04106.herokuapp.com/reviews")
       .then(res => res.json())
       .then(data => setreviewsData(data))
   }, [reviewsData, setreviewsData])

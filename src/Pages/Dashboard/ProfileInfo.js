@@ -51,7 +51,7 @@ const ProfileInfo = ({ location, education, link, proUser }) => {
                     <h2 className='text-2xl font-bold'>Social Link:</h2>
                     <p>{link}</p>
 
-                    <label  for="update-modal" className="btn modal-button bg-slate-700 mt-4  text-white hover:bg-secondary hover:border-transparent">Update Your Profile</label>
+                    <label  htmlFor="update-modal" className="btn modal-button bg-slate-700 mt-4  text-white hover:bg-secondary hover:border-transparent">Update Your Profile</label>
                    
                 </div>
 

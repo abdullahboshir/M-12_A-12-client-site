@@ -3,9 +3,9 @@ import { DotLoader } from 'react-spinners';
 
 const Loading = () => {
     return (
-        <div className='flex justify-center items-center h-[100vh] w-[100vw]'>
+        <div className='flex justify-center items-center h-[100vh] w-[98vw]'>
             <DotLoader
-                color="#312b99"
+                color="#E24459"
                 size={100}
             />
         </div>

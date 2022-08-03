@@ -1,16 +1,35 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import MyOrderUi from './MyOrderUi';
 
 
 
 const MyOrder = () => {
   const [confirmOrder, setConfirmOrder] = useState([]);
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate()
 
   useEffect(() => {
-    fetch('http://localhost:5000/userOrderData')
-      .then(res => res.json())
+    fetch(`https://sheltered-garden-04106.herokuapp.com/userOrderData?cutomerEmail=${user.email}`, {
+      metho: 'GET',
+      headers: {
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    })
+      .then(res => {
+        if(res.status === 401 || res.status === 403){
+          navigate('/')
+          signOut(auth)
+          localStorage.removeItem('accessToken')
+        }
+        return res.json()
+      })
       .then(data => setConfirmOrder(data))
-  }, [confirmOrder, setConfirmOrder])
+  }, [confirmOrder, setConfirmOrder, user])
+ 
 
 
   return (

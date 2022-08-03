@@ -1,38 +1,39 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import {  useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { ImGooglePlus2 } from 'react-icons/im';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
+import Loading from '../../Components/Shared/Loading/Loading';
 
 
 const Login = () => {
-
-    const location = useLocation();
-    const navigate = useNavigate()
-
     const [
         signInWithEmailAndPassword,
         user,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
-    const [signInWithGoogle] = useSignInWithGoogle(auth);
+    const [token] = useToken(user || gUser)
    
-
-    let errorElement;
-    if (error) {
-        errorElement = <div> <p style={{ color: "red" }}>Error: {error?.message}</p> </div>
-    }
-
-
+    const location = useLocation();
+    const navigate = useNavigate()
     const from = location.state?.from?.pathname || '/';
 
     useEffect(() =>{
-        if(user){
+        if(token){
             navigate(from, {replace: true});
         }
-    } ,[user, from, navigate])
+    } ,[token, from, navigate])
+
+
+    let errorElement;
+    if (error || gError) {
+        errorElement = <div> <p style={{ color: "red" }}>Error: {error?.message}</p> </div>
+    }
+
 
 
     const handleLoginBlur = event => {
@@ -43,7 +44,9 @@ const Login = () => {
         signInWithEmailAndPassword(email, password);
     }
 
-
+if(loading || gLoading){
+    return <Loading/>
+}
 
     return (
         <div className="hero min-h-screen bg-base-200">

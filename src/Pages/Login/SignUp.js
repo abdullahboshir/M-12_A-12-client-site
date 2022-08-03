@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { ImGooglePlus2 } from 'react-icons/im';
@@ -20,8 +20,18 @@ const SignUp = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    console.log(user)
 
     const [token] = useToken(user || gUser)
+    console.log(token)
+    const from = location.state?.from?.pathname || '/';
+
+    useEffect(() =>{
+        if(token){
+            navigate(from, {replace: true});
+        }
+    } ,[token, from, navigate])
+
 
     const handlesignup = event => {
         event.preventDefault()
@@ -34,11 +44,7 @@ const SignUp = () => {
     }
 
 
-    let from = location.state?.from?.pathname || "/";
-
-    if (user) {
-        navigate(from, { replace: true });
-    }
+ 
 
     if(gLoading || loading){
         return <Loading/>
@@ -48,6 +54,8 @@ const SignUp = () => {
     if (error) {
         errorElement = <div> <p style={{ color: "red" }}>Error: {error?.message}</p> </div>
     }
+
+   
 
     return (
         <div className="hero min-h-screen bg-base-200">

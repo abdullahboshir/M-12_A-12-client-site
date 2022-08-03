@@ -33,7 +33,7 @@ const Modal = ({ price, totalPrice, presesQuantity, setModalSwitch }) => {
       date: formattedDate
     }
 
-    await axios.post('http://localhost:5000/userOrderData', customerOderInfo)
+    await axios.post('https://sheltered-garden-04106.herokuapp.com/userOrderData', customerOderInfo)
     .then(res => (res))
     swal('Your Order is Success')
     setModalSwitch(null)
@@ -46,7 +46,7 @@ const Modal = ({ price, totalPrice, presesQuantity, setModalSwitch }) => {
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
-          <label for="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+          <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
           <h3 className="text-2xl font-bold mb-6">Confirm your order</h3>
           <form onSubmit={handleOrder}>
           <div className='flex-col'>

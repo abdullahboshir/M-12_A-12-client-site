@@ -25,7 +25,7 @@ const handleCancelOrder = (id) => {
           swal("Poof! Your Order has been deleted!", {
             icon: "success",
           });
-          const url = `http://localhost:5000/userOrderData/${id}`;
+          const url = `https://sheltered-garden-04106.herokuapp.com/userOrderData/${id}`;
           fetch(url, {
               method: 'DELETE'
           })
