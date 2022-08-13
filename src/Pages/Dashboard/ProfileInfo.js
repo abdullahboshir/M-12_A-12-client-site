@@ -2,38 +2,30 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Loading from '../../Components/Shared/Loading/Loading';
 import { FcBusinessman } from 'react-icons/fc';
-import UpdateModal from '../../Components/Dashboard-Sections/UpdateModal';
 import auth from '../../firebase.init';
-import { useNavigate, useParams } from 'react-router-dom';
 
-const ProfileInfo = ({ location, education, link, proUser }) => {
-    const [user, loading, error] = useAuthState(auth);
+const ProfileInfo = ({ setModalSwitch }) => {
+    const [user, loading] = useAuthState(auth);
+    const [profileUpdate, setProfileUpdate] = useState({});
+    const {updateEducation, updateLocation, socialLink } = profileUpdate;
 
-    // const {profileUser} = useParams();
-    // const [updateProfile, setUpdateProfile] = useState({})
-    // const [matchUpdateProfile, setmatchUpdateProfile] = useState({})
+    useEffect(() => {
+        fetch(`http://localhost:5000/profile/${user.email}`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => setProfileUpdate(data))
+    }, [user.email, profileUpdate]);
 
-    // const updateUser = {
-    //     updateEducation: education,
-    //     updateLocation: location,
-    //     socialLink: link,
-    //     UpdateUrl: '',
-    //     profileUser: user?.email
-    // }
-
-
-    // useEffect(() => {
-    //     const url = `https://desolate-falls-12074.herokuapp.com/products/${profileUser}`;
-    //     fetch(url)
-    //     .then(res => res.json())
-    //     .then(data => setUpdateProfile(data))
-    // }, [profileUser]);
-    
-  
     return (
         <div>
             <div className='text-start flex justify-between items-center w-[800px] mt-16'>
-                <FcBusinessman className='text-[300px] rounded-full' />
+            <div className='w-[300px]'>
+            { profileUpdate.UpdateUrl? <img src={profileUpdate.UpdateUrl} alt="" /> : <FcBusinessman className='text-[300px] rounded-full' />}
+            </div>
                 <div>
                     <h1 className='text-4xl font-bold mb-6'>Profile Informarion</h1>
                     <h2 className='text-2xl font-bold '>Name:</h2>
@@ -43,15 +35,15 @@ const ProfileInfo = ({ location, education, link, proUser }) => {
                     <p>{user && user?.email}</p>
 
                     <h2 className='text-2xl font-bold'>Education:</h2>
-                    <p>{education}</p>
+                    <p>{updateEducation? updateEducation : 'Education Qualification'}</p>
 
                     <h2 className='text-2xl font-bold'>Location:</h2>
-                    <p>{location}</p>
+                    <p>{updateLocation? updateLocation : 'Your Location'}</p>
 
                     <h2 className='text-2xl font-bold'>Social Link:</h2>
-                    <p>{link}</p>
+                    <p>{socialLink? socialLink : 'Social Link'}</p>
 
-                    <label  htmlFor="update-modal" className="btn modal-button bg-slate-700 mt-4  text-white hover:bg-secondary hover:border-transparent">Update Your Profile</label>
+                    <label onClick={() => setModalSwitch(true)} htmlFor="update-modal" className="btn modal-button bg-slate-700 mt-4  text-white hover:bg-secondary hover:border-transparent">Update Your Profile</label>
                    
                 </div>
 

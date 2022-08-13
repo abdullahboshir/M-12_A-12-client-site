@@ -20,10 +20,9 @@ const SignUp = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
-    console.log(user)
+
 
     const [token] = useToken(user || gUser)
-    console.log(token)
     const from = location.state?.from?.pathname || '/';
 
     useEffect(() =>{

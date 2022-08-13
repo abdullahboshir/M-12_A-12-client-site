@@ -8,7 +8,7 @@ const OurReviewPart = () => {
  const [reviewsData, setreviewsData] = useState([]);
 
   useEffect(() => {
-      fetch("https://sheltered-garden-04106.herokuapp.com/reviews")
+      fetch("http://localhost:5000/reviews")
       .then(res => res.json())
       .then(data => setreviewsData(data))
   }, [reviewsData, setreviewsData])
@@ -30,7 +30,7 @@ const OurReviewPart = () => {
          <div>
          {reviewsData?.map((item) => (
             <SwiperSlide>
-              <Reviews item={item} key={item.id} />{" "}
+              <Reviews item={item} key={item._id} />{" "}
             </SwiperSlide>
           ))}
          </div>

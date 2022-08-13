@@ -7,7 +7,7 @@ import { format } from 'date-fns';
 
 
 
-const Modal = ({ price, totalPrice, presesQuantity, setModalSwitch }) => {
+const Modal = ({ price, totalPrice, presesQuantity, setPresesQuantity, setModalSwitch, minimuQuantity }) => {
   const [user, loading, error] = useAuthState(auth);
   const formattedDate = format(new Date() , 'PP')
  
@@ -21,7 +21,7 @@ const Modal = ({ price, totalPrice, presesQuantity, setModalSwitch }) => {
     const customerNumber = e.target.number.value;
     const totalQuantity = presesQuantity;
     const OrderTotalPrice = totalPrice;
-    
+    setPresesQuantity(minimuQuantity)
 
     const customerOderInfo = {
       customerName,
@@ -33,10 +33,10 @@ const Modal = ({ price, totalPrice, presesQuantity, setModalSwitch }) => {
       date: formattedDate
     }
 
-    await axios.post('https://sheltered-garden-04106.herokuapp.com/userOrderData', customerOderInfo)
+    await axios.post('http://localhost:5000/userOrderData', customerOderInfo)
     .then(res => (res))
     swal('Your Order is Success')
-    setModalSwitch(null)
+    setModalSwitch(false)
   }
 
 

@@ -6,7 +6,7 @@
 //     useEffect(() => {
 //         const email = user?.email;
 //         if(email){
-//          fetch(`https://sheltered-garden-04106.herokuapp.com/admin/${email}`, {
+//          fetch(`http://localhost:5000/admin/${email}`, {
 //              method: 'GET',
 //              headers: {
 //                  'content-type': 'application/json',
@@ -33,10 +33,11 @@ import { useEffect, useState } from "react"
 const useAdmin = user => {
     const [admin, setAdmin] = useState(false);
     const [adminLoading, setAdminLoading] = useState(true);
+    
     useEffect( () =>{
         const email = user?.email;
         if(email){
-            fetch(`https://sheltered-garden-04106.herokuapp.com/admin/${email}`, {
+            fetch(`http://localhost:5000/admin/${email}`, {
                 method:'GET',
                 headers: {
                     'content-type': 'application/json',
@@ -45,12 +46,11 @@ const useAdmin = user => {
             })
             .then(res=> res.json())
             .then(data => {
-                console.log('form usr admin', data)
-                setAdmin(data.admin);
+                setAdmin(data.Admin);
                 setAdminLoading(false);
             })
         }
-    }, [user])
+    }, [user, admin])
 
     return [admin, adminLoading]
 }

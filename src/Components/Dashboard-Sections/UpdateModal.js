@@ -1,57 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import swal from 'sweetalert';
 
-const UpdateModal = ({setLink, setPic, setEducation, setLocation, pic, education, location, link, profileUser}) => {
+const UpdateModal = ({setModalSwitch}) => {
 
-    const [user, loading, error] = useAuthState(auth);
-    const [UpdateUrl, setUpdateUrl] = useState('')
-    const [updateEducation, setUpdateEducation] = useState('')
-    const [updateLocation, setUpdateLocation] = useState('')
-    const [socialLink, setSocialLink] = useState('')
-    const [UpdateProfile,setUpdateProfile] = useState()
-
-
-    // useEffect(() => {
-    //     setUpdateEducation(updateEducation);
-    //     setUpdateLocation(updateLocation);
-    //     setSocialLink(socialLink);
-    //     setUpdateUrl(UpdateUrl);
-    // }, [updateEducation, updateLocation, socialLink, UpdateUrl])
+    const [user, loading] = useAuthState(auth);
 
 
     const handleUpdateUser =  (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        const photoUrl = e.target.picture.value;
+        const education = e.target.education.value;
+        const location = e.target.location.value;
+        const socialLink = e.target.socialLink.value;
 
         const updateUserInfo = {
             updateEducation: education,
             updateLocation: location,
-            socialLink: link,
-            UpdateUrl: pic,
+            socialLink: socialLink,
+            UpdateUrl: photoUrl,
             profileUser: user.email
         }
-
-        // try{ 
-        //     fetch('https://sheltered-garden-04106.herokuapp.com/profile', {
-        //         method: 'POST',
-        //         headers: {
-        //             'content-type' : 'application/json',
-        //         },
-        //         body: JSON.stringify(updateUserInfo)
-        //     })
-        //     .then(res => res.json())
-        //     .then(data => {
-
-        //         swal("Success update your Profile")
-        //     })
-        // }
-        // catch(error){
-        //     console.log(error)
-        // }
-        
+  
         try{
-        fetch(`https://sheltered-garden-04106.herokuapp.com/profile/${user.email}`, {
+        fetch(`http://localhost:5000/profile/${user.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -61,15 +34,13 @@ const UpdateModal = ({setLink, setPic, setEducation, setLocation, pic, education
             .then(res => res.json)
             .then(data => {
                 swal("Success update your Profile")
-                console.log(data)
+                setModalSwitch(false)
             })
         }
         catch(error){
             console.log(error)
-        }
-
-       
-    }
+        } 
+    };
 
 
 
@@ -89,19 +60,19 @@ const UpdateModal = ({setLink, setPic, setEducation, setLocation, pic, education
 
                             <input type="text" disabled value={user?.email} placeholder="Type here" className="input input-bordered input-accent w-full max-w-sm my-2 text-base" />
 
-                            <input onChange={(e) => setPic(e.target.value)} type="text" required
+                            <input name='picture' type="text" required
                                 placeholder='Profile Image URL' className="input input-bordered input-accent w-full max-w-sm" />
 
-                            <input onChange={(e => setEducation(e.target.value))} required type="text"
+                            <input name='education' required type="text"
                                 placeholder='Education Qualification' className="input input-bordered input-accent w-full max-w-sm my-2" />
 
-                            <input onChange={(e => setLocation(e.target.value))} required type="text" placeholder="Your Location" className="input input-bordered input-accent w-full max-w-sm " />
+                            <input name='location'required type="text" placeholder="Your Location" className="input input-bordered input-accent w-full max-w-sm " />
                             
 
-                            <input onChange={(e => setLink(e.target.value))} required type="text" placeholder="Social Link" className="input input-bordered input-accent w-full max-w-sm my-2" />
+                            <input name='socialLink' required type="text" placeholder="Social Link" className="input input-bordered input-accent w-full max-w-sm my-2" />
                            
 
-                            <button className="btn btn-active btn-secondary text-white bg-slate-700 hover:bg-accent hover:border-transparent flex-start flex mt-4  w-40 ">Purchase</button>
+                            <button className="btn btn-active btn-secondary text-white bg-slate-700 hover:bg-accent hover:border-transparent flex-start flex mt-4  w-40 ml-10">Update</button>
                            
                         </form>
 

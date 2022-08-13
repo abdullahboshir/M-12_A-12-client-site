@@ -13,7 +13,7 @@ const PartsUi = ({part}) => {
 
     return ( 
        <div>
-         <div className="card rounded-none  bg-base-100 shadow-xl lg:w-96 mb-28">
+         <div className="card rounded-none  bg-base-100 shadow-xl lg:w-96">
              <figure><img src={img} alt="Shoes" className='w-60' /></figure>
         <div className="card-body">
           <h2 className="card-title text-2xl">{name}</h2>

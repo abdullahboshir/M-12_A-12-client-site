@@ -3,9 +3,11 @@ import { Routes, Route } from "react-router-dom";
 import AboutMe from '../Pages/About Me/AboutMe';
 import MakeAdmin from '../Pages/Admin Panel/MakeAdmin';
 import Blogs from '../Pages/Blogs/Blogs';
+import AddProduct from '../Pages/Dashboard/AddProduct';
 import AddReview from '../Pages/Dashboard/AddReview';
 import Allusers from '../Pages/Dashboard/Allusers';
 import Dashboard from '../Pages/Dashboard/Dashboard';
+import ManageProduct from '../Pages/Dashboard/ManageProduct';
 import MyOrder from '../Pages/Dashboard/MyOrder';
 import MyProfile from '../Pages/Dashboard/MyProfile';
 import ProfileInfo from '../Pages/Dashboard/ProfileInfo';
@@ -52,15 +54,26 @@ const AllRoutes = () => {
                         </RequireAuth>
                     } />
 
+
                     <Route path='AllUsers' element={
                         <RequireAuth>
                             <Allusers />
                         </RequireAuth>
                     } />
 
+                    <Route path='addProduct' element={
+                        <RequireAuth>
+                            <AddProduct />
+                        </RequireAuth>
+                    } />
+
+                    <Route path='manageProduct' element={
+                        <RequireAuth>
+                            <ManageProduct />
+                        </RequireAuth>
+                    } />
+
                 </Route>
-
-
 
                 <Route path='buyNow/:partsId' element={
                     <RequireAuth>

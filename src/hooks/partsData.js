@@ -4,10 +4,10 @@ const PartsInfo = () => {
 const [partsData, setPartsData] = useState([]);
 
 useEffect(() => {
-    fetch("https://sheltered-garden-04106.herokuapp.com/products")
+    fetch("http://localhost:5000/products")
     .then(res => res.json())
     .then(data => setPartsData(data))
-}, [])
+}, [partsData, setPartsData])
 
 return [partsData, setPartsData] 
 };

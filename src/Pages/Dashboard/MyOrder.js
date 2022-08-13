@@ -13,7 +13,7 @@ const MyOrder = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch(`https://sheltered-garden-04106.herokuapp.com/userOrderData?cutomerEmail=${user.email}`, {
+    fetch(`http://localhost:5000/userOrderData?cutomerEmail=${user.email}`, {
       metho: 'GET',
       headers: {
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -28,7 +28,7 @@ const MyOrder = () => {
         return res.json()
       })
       .then(data => setConfirmOrder(data))
-  }, [confirmOrder, setConfirmOrder, user])
+  }, [confirmOrder, setConfirmOrder, user, navigate])
  
 
 
@@ -42,7 +42,7 @@ const MyOrder = () => {
             <th>Date</th>
             <th>Total Prcie</th>
             <th>Email</th>
-            <th>Tranzation Id</th>
+            <th>Transaction  Id</th>
             <th>Action</th>
           </tr>
         </thead>
