@@ -28,9 +28,9 @@ const OurReviewPart = () => {
           onSwiper={(swiper) => (swiper)}
         >
          <div>
-         {reviewsData?.map((item) => (
-            <SwiperSlide>
-              <Reviews item={item} key={item._id} />{" "}
+         {reviewsData?.map((item, index) => (
+            <SwiperSlide key={index}>
+              <Reviews item={item} key={index} />{" "}
             </SwiperSlide>
           ))}
          </div>

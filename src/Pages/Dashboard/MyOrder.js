@@ -48,7 +48,7 @@ const MyOrder = () => {
         </thead>
         <tbody>
           {
-            confirmOrder.map(order => <MyOrderUi index order={order} key={order._id} />)
+            confirmOrder.map((order, index) => <MyOrderUi index={index} order={order} key={order._id} />)
           }
         </tbody>
       </table>

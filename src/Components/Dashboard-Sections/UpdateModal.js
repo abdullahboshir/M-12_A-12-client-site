@@ -27,7 +27,10 @@ const UpdateModal = ({setModalSwitch}) => {
         fetch(`http://localhost:5000/profile/${user.email}`, {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                   }
             },
             body: JSON.stringify(updateUserInfo)
         })

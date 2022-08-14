@@ -13,7 +13,7 @@ const ManageProductUi = ({ parts, index }) => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log('delete')
+         
         })
     }
 

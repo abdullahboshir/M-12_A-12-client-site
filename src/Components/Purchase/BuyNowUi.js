@@ -75,11 +75,11 @@ const BuyNowUi = ({ singlePart }) => {
                     <div className='flex justify-end items-center mt-12'>
 
                        {
-                         <label disabled={presesQuantity < minQuan || presesQuantity > quantity } htmlFor="my-modal-3" className="btn modal-button bg-slate-700 py-0 h-0 text-white hover:bg-secondary hover:border-transparent">Buy Now</label>
+                         <label onClick={() => setModalSwitch(true)} disabled={presesQuantity < minQuan || presesQuantity > quantity } htmlFor="my-modal-3" className="btn modal-button bg-slate-700 py-0 h-0 text-white hover:bg-secondary hover:border-transparent">Buy Now</label>
                        }
                        
                        {
-                        modalSwitch && <BuyModal setModalSwitch={setModalSwitch} setPresesQuantity={setPresesQuantity} price={price} totalPrice={totalPrice} presesQuantity={presesQuantity} minQuan={minQuan} quantity={quantity} minimuQuantity={minimuQuantity}/>
+                        modalSwitch && <BuyModal setModalSwitch={setModalSwitch} setPresesQuantity={setPresesQuantity} price={price} totalPrice={totalPrice} presesQuantity={presesQuantity} minQuan={minQuan} quantity={quantity} minimuQuantity={minimuQuantity} name={name} />
                        }
                        
                     </div>

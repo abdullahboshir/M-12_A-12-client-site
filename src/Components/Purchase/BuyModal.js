@@ -7,12 +7,12 @@ import { format } from 'date-fns';
 
 
 
-const Modal = ({ price, totalPrice, presesQuantity, setPresesQuantity, setModalSwitch, minimuQuantity }) => {
+const Modal = ({ price, totalPrice, presesQuantity, setPresesQuantity, setModalSwitch, minimuQuantity, name }) => {
   const [user, loading, error] = useAuthState(auth);
   const formattedDate = format(new Date() , 'PP')
  
 
-
+ 
   const handleOrder = async (e) => {
     e.preventDefault()
     const customerName = user.displayName;
@@ -24,6 +24,7 @@ const Modal = ({ price, totalPrice, presesQuantity, setPresesQuantity, setModalS
     setPresesQuantity(minimuQuantity)
 
     const customerOderInfo = {
+      partsName : name,
       customerName,
       cutomerEmail,
       customerAddress,
@@ -33,7 +34,11 @@ const Modal = ({ price, totalPrice, presesQuantity, setPresesQuantity, setModalS
       date: formattedDate
     }
 
-    await axios.post('http://localhost:5000/userOrderData', customerOderInfo)
+    await axios.post('http://localhost:5000/userOrderData', customerOderInfo, {
+    headers: {
+      authorization: `Bearer ${localStorage.getItem('accessToken')}`
+     }
+    })
     .then(res => (res))
     swal('Your Order is Success')
     setModalSwitch(false)

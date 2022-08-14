@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
-const AddProduct = () => {
+const AddProduct =  () => {
 
-    const [quan, setQuan] = useState(0);
+    const [quan, setQuan] =  useState(0);
     const [minimum, setMinimum] = useState(0);
+    const [error, setError] = useState('')
+
+// useEffect(() => {
+//     setQuan(quan);
+//     setMinimum(minimum);
+//     if( parseInt(quan < minimum)){
+//         setError('Please enter the minimum amount less then the amount')
+//     }
+// }, [quan, minimum])
+
 
     const handleProductAdd = e => {
         e.preventDefault();
@@ -67,7 +77,7 @@ const AddProduct = () => {
                             <input onChange={(e) => setMinimum(e.target.value)} name='minQuantity' type="number" placeholder="Min Quantity" class="input input-bordered  w-[138px]" />
                         </div>
                         {
-                            quan < minimum && <small>Please enter the minimum amount less then the amount</small>
+                            <small>{error}</small>
                         }
 
                         <div class="form-control flex flex-row justify-between">

@@ -8,7 +8,12 @@ const BuyNow = () => {
     const [singlePart, setSinglePart] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${partsId}`)
+        fetch(`http://localhost:5000/products/${partsId}`, {
+           method: 'GET',
+           headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+           }
+        })
         .then(res => res.json())
         .then(data => setSinglePart(data))
     }, [singlePart, partsId]) 

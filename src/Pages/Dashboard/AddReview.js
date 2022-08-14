@@ -12,7 +12,7 @@ const AddReview = () => {
 
    const localDate =  new Date().toLocaleDateString();
 
-console.log(user )
+
     const selectRate = selectedRate+".00/5.00";
     const reviewPost = {
         name : user?.displayName,
@@ -28,7 +28,11 @@ console.log(user )
     const handleSubmitReview =async (e)=>{
         e.preventDefault()
 
-            await axios.post(`http://localhost:5000/reviews`,reviewPost )
+            await axios.post(`http://localhost:5000/reviews`,reviewPost,{
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                   }
+            } )
         .then(res => (res))
         setComment('')
         swal("add to review success");
