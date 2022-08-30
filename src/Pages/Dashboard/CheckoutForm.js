@@ -5,9 +5,12 @@ const CheckoutForm = ({ payment }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
+    const [success, setSuccess] = useState('');
+    const [processing, setProcessing] = useState(false);
+    const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState('');
 
-    const { OrderTotalPrice } = payment;
+    const { OrderTotalPrice, customerName, cutomerEmail, _id } = payment;
 
 
     useEffect(() => {
@@ -25,7 +28,8 @@ const CheckoutForm = ({ payment }) => {
                     setClientSecret(data.clientSecret)
                 }
             })
-    }, [OrderTotalPrice])
+    }, [OrderTotalPrice]);
+   
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -46,10 +50,52 @@ const CheckoutForm = ({ payment }) => {
             card
         });
 
-        if (error) {
-            setCardError(error?.message || '')
-        }
+        setCardError(error?.message || '');
+        setSuccess('')
+        setProcessing(true)
+        // confirm card payment 
+        const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: customerName,
+                        email: cutomerEmail
+                    },
+                },
+            },
+        );
 
+        if (intentError) {
+            setCardError(intentError?.message);
+            setProcessing(false)
+        }
+        else {
+            setCardError('');
+            setTransactionId(paymentIntent.id);
+            setSuccess('Congrats! your payment is completed.');
+
+            const payment = {
+                OrderId: _id,
+                transactionId: paymentIntent.id
+            }
+
+            fetch(`http://localhost:5000/userOrderData/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(payment)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log('this is respose', data)
+                setProcessing(false)
+             
+            })
+        }
 
     };
 
@@ -78,7 +124,13 @@ const CheckoutForm = ({ payment }) => {
                 </button>
             </form>
             {
-                cardError && <p className='text-red-500'>{cardError}</p>
+                cardError && <p className='text-red-500 text-bold'>{cardError}</p>
+            }
+            {
+                success && <div>
+                    <p className='text-green-500 '>{success}</p>
+                    <p className='text-orange-500'>Your transaction Id: <span className='font-bold'>{transactionId}</span></p>
+                </div>
             }
         </div>
     );

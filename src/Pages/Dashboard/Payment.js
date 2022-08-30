@@ -3,9 +3,9 @@ import { loadStripe } from '@stripe/stripe-js';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CheckoutForm from './CheckoutForm';
-import MyOrderUi from './MyOrderUi';
 
 const stripePromise = loadStripe('pk_test_51LV3NpBVsZQlTL5ZPHnasmh55fH3vnCFSLLgeSDerCBbpqkuCmcdD9pZ3tLee9MJt9ZUM7HkgaDwj7qimoiefLE5002AFLfwwg');
+
 
 const Payment = () => {
     const { paymentId } = useParams();
